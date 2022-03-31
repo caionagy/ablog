@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Delete post {% endblock %}
+{% block content %}
+
+<h1>Delete_Post</h1>
+<br><br>
+{% if user.is_authenticated %}
+        {% if user.is_staff == 1 %}
+            <h3>Delete: {{ post.title }}</h3>
+            <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                <strong>Are you sure?!</strong><br><br><br>
+                <button class="btn btn-warning">Delete</button>
+
+            </form>
+            </div>
+         {% else %}
+              Você não tem permissão para estar aqui e você sabe disso ;) 
+         {% endif %}
+{% else %}
+
+Você não tem permissão para estar aqui e você sabe disso ;) 
+
+{% endif %}
+{% endblock %}

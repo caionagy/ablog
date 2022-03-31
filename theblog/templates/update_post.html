@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Update post {% endblock %}
+{% block content %}
+
+<h1>Update_Post</h1>
+{% if user.is_authenticated %}
+        {% if user.is_staff == 1 %}
+            <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-success">Update</button>
+
+            </form>
+            </div>
+        {% else %}
+          Você não tem permissão para estar aqui e você sabe disso ;) 
+        {% endif %}
+{% else %}
+
+Você não tem permissão para estar aqui e você sabe disso ;) 
+
+{% endif %}
+{% endblock %}
