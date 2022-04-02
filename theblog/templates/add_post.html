@@ -6,8 +6,9 @@
 {% if user.is_authenticated %}
         {% if user.is_staff == 1 %}
             <div class="form-group">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                {{ form.media }}
                 {{ form.as_p }}
                 <button class="btn btn-success">Postar</button>
 
